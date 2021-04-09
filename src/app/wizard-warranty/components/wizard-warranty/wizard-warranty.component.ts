@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-wizard-warranty',
   templateUrl: './wizard-warranty.component.html',
-  styleUrls: ['./wizard-warranty.component.scss']
+  styleUrls: ['./wizard-warranty.component.scss'],
 })
 export class WizardWarrantyComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  step = 1;
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  changeStep($event): number {
+    return (this.step = $event);
   }
-
 }

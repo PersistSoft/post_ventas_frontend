@@ -1,14 +1,28 @@
 <div class="form-card">
   <h2 class="fs-title">Personal Information</h2>
-  <input type="text" name="fname" placeholder="First Name" />
-  <input type="text" name="lname" placeholder="Last Name" />
-  <input type="text" name="phno" placeholder="Contact No." />
-  <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+  <input type="text" name="name" placeholder="Nombre Completo" />
+  <input type="text" name="tel" placeholder="Telefono" />
+  <input type="text" name="phno" placeholder="Celular" />
+  <input type="email" name="email" placeholder="Correo  " />
 </div>
 <input
   type="button"
   name="previous"
   class="previous action-button-previous"
   value="Previous"
+  (click)="stepMinus()"
 />
-<input type="button" name="next" class="next action-button" value="Next Step" />
+<input
+  type="button"
+  name="next"
+  class="next action-button"
+  value="Next Step"
+  (click)="stepPlus()"
+/>
+<p>Revisar por el abogado este parrafo es una copia</p>
+<p>
+  NOTA : Recuerde que para la atencion de su requerimiento es indispensable que
+  los daños no sean consecuencia de uso indebido, falta de mantenimiento, o por
+  no sefuir las recomendaciones especificas en el manual del propietario,
+  suministrado al momento de la entrega del inmueble
+</p>

@@ -33,6 +33,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
+      useHash: true,
     }),
   ],
   exports: [RouterModule],
