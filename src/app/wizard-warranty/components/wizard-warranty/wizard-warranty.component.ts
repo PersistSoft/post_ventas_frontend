@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class WizardWarrantyComponent implements OnInit {
   constructor() {}
 
-  step = 1;
+  step = 3;
   ngOnInit(): void {}
 
   changeStep($event): number {
