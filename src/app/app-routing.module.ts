@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'warranty',
+        redirectTo: 'auth',
         pathMatch: 'full',
       },
       {
@@ -19,6 +19,11 @@ const routes: Routes = [
           import('./wizard-warranty/wizard-warranty.module').then(
             (m) => m.WizardWarrantyModule
           ),
+      },
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('./auth/auth.module').then((m) => m.AuthModule),
       },
       {
         path: '**',

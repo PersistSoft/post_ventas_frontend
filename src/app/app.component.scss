@@ -1,7 +1,9 @@
+@import "./vars.scss";
+
 body {
   margin: 0;
   padding: 0;
-  color: bisque;
+  background: $background-color;
 }
 html {
   height: 100%;

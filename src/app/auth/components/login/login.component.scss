@@ -1,6 +1,9 @@
 @import "./../../../vars.scss";
 
+html {
+  height: 100vh;
+}
 .conte {
   background: $background-color;
-  height: 100%;
+  height: 92vh;
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 
 import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
