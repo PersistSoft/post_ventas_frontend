@@ -6,9 +6,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./wizard-warranty.component.scss'],
 })
 export class WizardWarrantyComponent implements OnInit {
+  step = 1;
+
   constructor() {}
 
-  step = 3;
   ngOnInit(): void {}
 
   changeStep($event): number {

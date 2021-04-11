@@ -9,39 +9,49 @@
         <p class="font-monospace px-3">
           Llenar el Formulario para ir al siquiente paso
         </p>
-        <div class="row">
-          <div class="col py-2" style="background: green">
-            <!-- progressbar -->
-            <ul
-              id="progressbar"
-              class="list-group list-group-horizontal justify-content-center"
-            >
-              <li class="list-group-item mx-1 px-1 rounded" id="account">
-                <strong>Inmueble</strong>
-                <br />
-                <span class="badge bg-primary px-1 rounded-pill">pending</span>
-              </li>
+        <div
+          class="row py-3 mx-1 justify-content-center align-items-center"
+          id="progressbar"
+        >
+          <!-- progressbar  col-lg-3 col-md-6 col-sm-12 -->
 
-              <li class="list-group-item mx-1 px-1 rounded" id="personal">
-                <strong>Contacto</strong>
-                <br />
-                <span class="badge bg-primary px-1 rounded-pill">pending</span>
-              </li>
-
-              <li class="list-group-item mx-1 px-1 rounded" id="warranty">
-                <strong>Garantias</strong>
-                <br />
-                <span class="badge bg-primary px-1 rounded-pill">pending</span>
-              </li>
-
-              <li class="list-group-item mx-1 px-1 rounded" id="confirm">
-                <strong>Confirmacion</strong>
-                <br />
-                <span class="badge bg-primary px-1 rounded-pill">pending</span>
-              </li>
-            </ul>
+          <div
+            class="col-lg-2 flex-fill shadow-sm-1 mx-1 my-2 py-2 rounded"
+            id="account"
+          >
+            <strong class="my-2">Inmueble</strong>
+            <br />
+            <span class="badge bg-primary mb-2 rounded-pill">pending</span>
           </div>
-          <!-- maininfo -->
+          <div
+            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 rounded"
+            id="personal"
+          >
+            <strong>Contacto</strong>
+            <br />
+            <span class="badge bg-primary mb-2 px-1 rounded-pill">pending</span>
+          </div>
+
+          <div
+            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 rounded"
+            id="warranty"
+          >
+            <strong>Garantias</strong>
+            <br />
+            <span class="badge bg-primary mb-2 px-1 rounded-pill">pending</span>
+          </div>
+
+          <div
+            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 px-1 rounded"
+            id="confirm"
+          >
+            <strong>Confirmacion</strong>
+            <br />
+            <span class="badge bg-primary mb-2 px-1 rounded-pill">pending</span>
+          </div>
+        </div>
+        <!-- maininfo -->
+        <div class="row">
           <div class="card-body py-0">
             <div class="row">
               <div class="col px-2 mx-2 pt-2">
