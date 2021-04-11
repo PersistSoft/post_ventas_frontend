@@ -1,0 +1,79 @@
+<div class="container-fluid conte">
+  <div class="row justify-content-center mt-0" id="mainCard">
+    <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+      <div
+        class="card px-0 pt-4 mt-3 mb-3 shadow-sm p-3 mb-5 bg-body rounded-2"
+      >
+        <!-- header -->
+        <div class="card-title fw-bold font-monospace fs-3">POSTVENTAS</div>
+        <p class="font-monospace px-3">
+          Llenar el Formulario para ir al siquiente paso
+        </p>
+        <div class="row">
+          <div class="col py-2" style="background: green">
+            <!-- progressbar -->
+            <ul
+              id="progressbar"
+              class="list-group list-group-horizontal justify-content-center"
+            >
+              <li class="list-group-item mx-1 px-1 rounded" id="account">
+                <strong>Inmueble</strong>
+                <br />
+                <span class="badge bg-primary px-1 rounded-pill">pending</span>
+              </li>
+
+              <li class="list-group-item mx-1 px-1 rounded" id="personal">
+                <strong>Contacto</strong>
+                <br />
+                <span class="badge bg-primary px-1 rounded-pill">pending</span>
+              </li>
+
+              <li class="list-group-item mx-1 px-1 rounded" id="warranty">
+                <strong>Garantias</strong>
+                <br />
+                <span class="badge bg-primary px-1 rounded-pill">pending</span>
+              </li>
+
+              <li class="list-group-item mx-1 px-1 rounded" id="confirm">
+                <strong>Confirmacion</strong>
+                <br />
+                <span class="badge bg-primary px-1 rounded-pill">pending</span>
+              </li>
+            </ul>
+          </div>
+          <!-- maininfo -->
+          <div class="card-body py-0">
+            <div class="row">
+              <div class="col px-2 mx-2 pt-2">
+                <fieldset *ngIf="step === 1">
+                  <app-step1
+                    [initStep]="step"
+                    (stepChanged)="changeStep($event)"
+                  ></app-step1>
+                </fieldset>
+                <fieldset *ngIf="step === 2">
+                  <app-step2
+                    [initStep]="step"
+                    (stepChanged)="changeStep($event)"
+                  ></app-step2>
+                </fieldset>
+                <fieldset *ngIf="step === 3">
+                  <app-step3
+                    [initStep]="step"
+                    (stepChanged)="changeStep($event)"
+                  ></app-step3>
+                </fieldset>
+                <fieldset *ngIf="step === 4">
+                  <app-step4
+                    [initStep]="step"
+                    (stepChanged)="changeStep($event)"
+                  ></app-step4>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

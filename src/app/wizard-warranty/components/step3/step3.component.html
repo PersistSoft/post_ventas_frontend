@@ -1,0 +1,49 @@
+<section id="step1" class="pt-3 pb-2">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h3 class="text-uppercase">Selecione las causas de atencion</h3>
+      </div>
+    </div>
+
+    <div class="list-group text-start">
+      <label class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        Carpinteria
+      </label>
+      <label class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        Plomeria
+      </label>
+      <label class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        Electrica
+      </label>
+      <label class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        Fourth checkbox
+      </label>
+      <label class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        Estructura (Es la garantia del edificio. Cubrira en terminos generales
+        los defectos de contruccion que afectemn la seguridad y estabilidad
+        estructural del edificio)
+      </label>
+    </div>
+
+    <input
+      type="button"
+      name="previous"
+      class="btn btn-outline-success mt-3 mb-2 mx-3"
+      value="Previous"
+      (click)="stepMinus()"
+    />
+    <input
+      type="button"
+      name="next"
+      class="btn btn-outline-success mt-3 mb-2"
+      value="Next Step"
+      (click)="stepPlus()"
+    />
+  </div>
+</section>

@@ -1,0 +1,86 @@
+<section id="step1" class="pt-3 pb-2">
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h2 class="text-uppercase">Personal Information</h2>
+      </div>
+      <div class="row">
+        <div class="col text-center">Ingrse Informacion de Contacto</div>
+      </div>
+    </div>
+
+    <form>
+      <div class="form-group mb-3 mt-3 row">
+        <label for="name" class="form-label text-start mx-1 px-0"
+          >Ingrese Nombre completo</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Nombre Completo"
+        />
+      </div>
+
+      <div class="form-group mb-3 row">
+        <label for="name" class="form-label text-start mx-1 px-0"
+          >Telefono</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="tel"
+        />
+      </div>
+      <div class="form-group mb-3 row">
+        <label for="name" class="form-label text-start mx-1 px-0"
+          >Celular</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="cel"
+        />
+      </div>
+      <div class="form-group mb-3 row">
+        <label for="name" class="form-label text-start mx-1 px-0"
+          >Ingrese Correo</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="email"
+        />
+      </div>
+    </form>
+    <div class="row">
+      <div class="col text-start text-break">
+        <p class="lh-sm">Revisar por el abogado este parrafo es una copia</p>
+        <p>
+          NOTA : Recuerde que para la atencion de su requerimiento es
+          indispensable que los daños no sean consecuencia de uso indebido,
+          falta de mantenimiento, o por no sefuir las recomendaciones
+          especificas en el manual del propietario, suministrado al momento de
+          la entrega del inmueble
+        </p>
+      </div>
+    </div>
+    <input
+      type="button"
+      name="previous"
+      class="btn btn-outline-success mt-3 mb-2 mx-3"
+      value="Previous"
+      (click)="stepMinus()"
+    />
+    <input
+      type="button"
+      name="next"
+      class="btn btn-outline-success mt-3 mb-2"
+      value="Next Step"
+      (click)="stepPlus()"
+    />
+  </div>
+</section>
