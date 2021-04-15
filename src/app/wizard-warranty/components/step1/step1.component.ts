@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from '../../../core/services/project/project.service';
 import { BuildingService } from '../../../core/services/buildings/building.service';
+import { AparmentService } from './../../../core/services/aparment/aparment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,7 +23,8 @@ export class Step1Component implements OnInit {
   constructor(
     private fb: FormBuilder,
     private projectService: ProjectService,
-    private buildingService: BuildingService
+    private buildingService: BuildingService,
+    private aparmentService: AparmentService
   ) {
     this.stepForm();
     this.projectService.getAllProjects().subscribe((data) => {
@@ -45,8 +47,15 @@ export class Step1Component implements OnInit {
     this.buildingService
       .getAllBuildingsByProjectsId(idProject)
       .subscribe((data) => {
-        console.log(data[0]);
         return (this.buildings = data);
+      });
+  }
+  onChangeBuilding(idAparment: number) {
+    console.log(idAparment);
+    this.aparmentService
+      .getAllBuildingsByProjectsId(idAparment)
+      .subscribe((data) => {
+        return (this.aparments = data);
       });
   }
 

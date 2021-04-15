@@ -22,6 +22,7 @@
           formControlName="project"
           (change)="onChangeProject($event.target.value)"
         >
+          <option value="" disabled selected>Selecione Proyecto</option>
           <option *ngFor="let project of projects" value="{{ project.id }}">
             {{ project.name }}
           </option>
@@ -42,9 +43,11 @@
           id="project"
           formControlName="build"
           placeholder="Selecione el Projecto"
+          (change)="onChangeBuilding($event.target.value)"
         >
           <!-- [class.is-invalid]="this.step1Form.invalid && this.step1Form.touched" -->
-          <option *ngFor="let build of buildings" value="{{ buildings.id }}">
+          <option value="" disabled selected>Selecione Edificio</option>
+          <option *ngFor="let build of buildings" value="{{ build.id }}">
             {{ build.name }}
           </option>
         </select>
@@ -55,18 +58,19 @@
 
       <div class="form-group row mb-3">
         <label class="form-label text-start mx-1 px-0" for="project"
-          >Selecione el inmueble</label
+          >Inmueble</label
         >
         <select
           type="text"
           class="form-control"
           id="project"
           formControlName="aparment"
-          placeholder="Selecione el Projecto"
+          placeholder="Selecione Inmueble"
         >
-          <option>Casas 1</option>
-          <option>312</option>
-          <option>101</option>
+          <option value="" disabled selected>Selecione Inmueble</option>
+          <option *ngFor="let aparment of aparments" value="{{ aparment.id }}">
+            {{ aparment.name }}
+          </option>
         </select>
         <!-- <small *ngIf="false" class="text-danger"
           >Debe Seleccionar un apartamento</small
