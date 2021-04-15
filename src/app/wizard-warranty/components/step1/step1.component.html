@@ -9,21 +9,28 @@
       <div class="col">Selecciona el inmueble</div>
     </div>
 
-    <form class="form-iniline">
+    <form class="form-iniline" [formGroup]="step1Form">
       <div class="form-group row mb-3 mt-3">
         <label class="form-label text-start mx-1 px-0" for="project"
-          >Projecto</label
+          >Project</label
         >
         <select
           type="text"
           class="form-control"
           id="project"
           placeholder="Selecione el Projecto"
+          formControlName="project"
+          (change)="onChangeProject($event.target.value)"
         >
-          <option>La Vida Es Bella</option>
-          <option>Amsterdam</option>
-          <option>Roterdam</option>
+          <option *ngFor="let project of projects" value="{{ project.id }}">
+            {{ project.name }}
+          </option>
         </select>
+        <!-- <small
+          *ngIf="this.step1Form.invalid && this.step1Form.touched"
+          class="text-danger"
+          >Debe Seleccionar un Projecto</small
+        > -->
       </div>
       <div class="form-group row mb-3">
         <label class="form-label text-start mx-1 px-0" for="project"
@@ -33,12 +40,17 @@
           type="text"
           class="form-control"
           id="project"
+          formControlName="build"
           placeholder="Selecione el Projecto"
         >
-          <option>Torre 1</option>
-          <option>Bloque A</option>
-          <option>Torre 3</option>
+          <!-- [class.is-invalid]="this.step1Form.invalid && this.step1Form.touched" -->
+          <option *ngFor="let build of buildings" value="{{ buildings.id }}">
+            {{ build.name }}
+          </option>
         </select>
+        <small *ngIf="false" class="text-danger"
+          >Debe Seleccionar una Torre</small
+        >
       </div>
 
       <div class="form-group row mb-3">
@@ -49,21 +61,32 @@
           type="text"
           class="form-control"
           id="project"
+          formControlName="aparment"
           placeholder="Selecione el Projecto"
         >
           <option>Casas 1</option>
           <option>312</option>
           <option>101</option>
         </select>
+        <!-- <small *ngIf="false" class="text-danger"
+          >Debe Seleccionar un apartamento</small
+        > -->
       </div>
     </form>
+    <div class="row">
+      <div class="col">
+        <small *ngIf="this.isInvalid" class="text-danger"
+          >Revisar el Formulario Esa mal diligenciado</small
+        >
+      </div>
+    </div>
 
     <input
       type="button"
       name="next"
       class="btn btn-outline-success mt-3 mb-2"
       value="Next Step"
-      (click)="stepPlus()"
+      (click)="saveStep()"
     />
   </div>
 </section>
