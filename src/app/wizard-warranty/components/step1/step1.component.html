@@ -20,10 +20,14 @@
           id="project"
           placeholder="Selecione el Projecto"
           formControlName="project"
-          (change)="onChangeProject($event.target.value)"
+          (change)="onChangeProject($event)"
         >
           <option value="" disabled selected>Selecione Proyecto</option>
-          <option *ngFor="let project of projects" value="{{ project.id }}">
+          <option
+            *ngFor="let project of projects"
+            [ngValue]="project"
+            [selected]
+          >
             {{ project.name }}
           </option>
         </select>
@@ -47,7 +51,7 @@
         >
           <!-- [class.is-invalid]="this.step1Form.invalid && this.step1Form.touched" -->
           <option value="" disabled selected>Selecione Edificio</option>
-          <option *ngFor="let build of buildings" value="{{ build.id }}">
+          <option *ngFor="let build of buildings" [ngValue]="build">
             {{ build.name }}
           </option>
         </select>
@@ -68,7 +72,7 @@
           placeholder="Selecione Inmueble"
         >
           <option value="" disabled selected>Selecione Inmueble</option>
-          <option *ngFor="let aparment of aparments" value="{{ aparment.id }}">
+          <option *ngFor="let aparment of aparments" [ngValue]="aparment">
             {{ aparment.name }}
           </option>
         </select>

@@ -4,7 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from '../../../core/services/project/project.service';
 import { BuildingService } from '../../../core/services/buildings/building.service';
 import { AparmentService } from './../../../core/services/aparment/aparment.service';
-import { Router, ActivatedRoute } from '@angular/router';
+
+import { ProjectModel } from '../../../core/models/project.model';
+import { BuildingModel } from './../../../core/models/building.model';
+import { AparmentModel } from './../../../core/models/aparment.model';
 
 @Component({
   selector: 'app-step1',
@@ -16,9 +19,12 @@ export class Step1Component implements OnInit {
   @Input() initStep: number;
   @Output() stepChanged: EventEmitter<number> = new EventEmitter();
   step1Form: FormGroup;
-  projects;
-  buildings;
-  aparments;
+  projects: ProjectModel[];
+  selectedProject: ProjectModel;
+  buildings: BuildingModel[];
+  buildingSelect: BuildingModel;
+  aparments: AparmentModel[];
+  aparmentSelect: AparmentModel;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +34,6 @@ export class Step1Component implements OnInit {
   ) {
     this.stepForm();
     this.projectService.getAllProjects().subscribe((data) => {
-      console.log(data);
       this.projects = data;
     });
   }
@@ -43,34 +48,25 @@ export class Step1Component implements OnInit {
     });
   }
 
-  onChangeProject(idProject: number) {
+  onChangeProject(event): void {
     this.buildingService
-      .getAllBuildingsByProjectsId(idProject)
-      .subscribe((data) => {
-        return (this.buildings = data);
-      });
+      .getAllBuildingsByProjectsId(this.step1Form.value.project.id)
+      .subscribe((data) => (this.buildings = data));
   }
-  onChangeBuilding(idAparment: number) {
-    console.log(idAparment);
+  onChangeBuilding(event): void {
     this.aparmentService
-      .getAllBuildingsByProjectsId(idAparment)
+      .getAllBuildingsByProjectsId(this.step1Form.value.build.id)
       .subscribe((data) => {
-        return (this.aparments = data);
+        this.aparments = data;
       });
   }
 
   saveStep(): any {
-    // if (this.step1Form.invalid) {
-    //   Object.values(this.step1Form.controls).forEach((control) => {
-    //     control.markAsTouched();
-    //     console.log(this.step1Form.invalid, this.step1Form.touched);
-    //   });
-    //   return;
-    // }
-    // if (this.step1Form.invalid) {
-    //   this.isInvalid = true;
-    //   return;
-    // }
+    if (this.step1Form.invalid) {
+      this.isInvalid = true;
+      return;
+    }
+    console.log(this.step1Form.value);
     return this.stepChanged.emit(this.initStep + 1);
   }
 }

@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-#wizard_element {
+.wizard_element {
   background: #eef1f4;
 }
 .active {
@@ -17,7 +17,7 @@
   background: #f1e3e4;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .wizard_element {
     display: none;
   }
