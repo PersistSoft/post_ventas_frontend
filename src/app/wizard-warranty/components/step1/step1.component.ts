@@ -62,10 +62,10 @@ export class Step1Component implements OnInit {
   }
 
   saveStep(): any {
-    if (this.step1Form.invalid) {
-      this.isInvalid = true;
-      return;
-    }
+    // if (this.step1Form.invalid) {
+    //   this.isInvalid = true;
+    //   return;
+    // }
     console.log(this.step1Form.value);
     return this.stepChanged.emit(this.initStep + 1);
   }

@@ -26,6 +26,13 @@ const routes: Routes = [
           import('./auth/auth.module').then((m) => m.AuthModule),
       },
       {
+        path: 'data-treatment',
+        loadChildren: () =>
+          import('./data-politics/data-politics.module').then(
+            (m) => m.DataPoliticsModule
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'warranty',
         pathMatch: 'full',
