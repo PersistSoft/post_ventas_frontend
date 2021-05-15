@@ -5,11 +5,12 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectService {
+export class WarrantyTypeService {
   private URL = environment.url;
+
   constructor(private http: HttpClient) {}
 
-  getAllProjects(): any {
-    return this.http.get(`${this.URL}/projects`);
+  getAll(): any {
+    return this.http.get(`${this.URL}/warrantyTypes`);
   }
 }

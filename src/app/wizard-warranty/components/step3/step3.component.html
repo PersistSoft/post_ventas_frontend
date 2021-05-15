@@ -6,28 +6,10 @@
       </div>
     </div>
 
-    <div class="list-group text-start">
+    <div class="list-group text-start" *ngFor="let type of warrantiesTypes">
       <label class="list-group-item">
         <input class="form-check-input me-1" type="checkbox" value="" />
-        Carpinteria
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Plomeria
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Electrica
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Fourth checkbox
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Estructura (Es la garantia del edificio. Cubrira en terminos generales
-        los defectos de contruccion que afectemn la seguridad y estabilidad
-        estructural del edificio)
+        {{ type.name }}
       </label>
     </div>
 

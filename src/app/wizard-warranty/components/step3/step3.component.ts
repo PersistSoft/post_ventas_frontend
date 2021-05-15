@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { WarrantyTypeService } from './../../../core/services/warrantyType/warranty-type.service';
+import { WarrantyTypeModule } from './../../../core/models/warranty-type.model';
 @Component({
   selector: 'app-step3',
   templateUrl: './step3.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class Step3Component implements OnInit {
   @Input() initStep: number;
   @Output() stepChanged: EventEmitter<number> = new EventEmitter();
-  constructor() {}
+  warrantiesTypes: WarrantyTypeModule[];
+
+  constructor(private warrantyTypeService: WarrantyTypeService) {
+    this.warrantyTypeService
+      .getAll()
+      .subscribe((data) => (this.warrantiesTypes = data));
+  }
 
   ngOnInit(): void {}
 
