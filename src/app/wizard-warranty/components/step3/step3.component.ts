@@ -27,17 +27,18 @@ export class Step3Component implements OnInit {
     private warrantyTypeService: WarrantyTypeService,
     private fb: FormBuilder
   ) {
-    this.createForm();
     this.warrantyTypeService.getAll().subscribe((data) => {
       this.warrantiesTypes = data.map((el) => {
         const newElement = { ...el, checked: false };
-        console.log(newElement);
+
         return newElement;
       });
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.createForm();
+  }
 
   createForm(): void {
     this.formStep3 = this.fb.group({
