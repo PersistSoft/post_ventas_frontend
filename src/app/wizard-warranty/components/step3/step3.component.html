@@ -19,7 +19,7 @@
           {{ type.name }}
         </label>
       </div>
-      <div class="form-floating">
+      <div class="form-floating" *ngIf="warrantiesArray.length > 0">
         <textarea
           formControlName="explanation"
           class="form-control mb-2 comment-post"
@@ -32,6 +32,8 @@
       </div>
 
       {{ this.formStep3.value | json }}
+      {{ warrantiesArray.length }}
+      {{ this.formStep3.invalid }}
     </div>
     <input
       type="button"
@@ -45,6 +47,7 @@
       name="next"
       class="btn btn-outline-success mt-3 mb-2"
       value="Next Step"
+      [disabled]="this.formStep3.invalid"
       (click)="stepPlus()"
     />
   </div>

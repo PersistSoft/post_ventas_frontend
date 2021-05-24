@@ -55,9 +55,7 @@ export class Step3Component implements OnInit {
       this.warrantiesArray.push(this.fb.control(item));
     } else {
       const arr = this.warrantiesArray.value;
-      const arrId = arr.reduce(...arr, arr.id);
-      console.log(arrId);
-      const index = 1;
+      const index = arr.map((e) => e.id).indexOf(item.id);
       this.warrantiesArray.removeAt(index);
     }
     item.checked = !item.checked;
