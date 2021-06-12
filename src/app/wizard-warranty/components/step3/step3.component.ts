@@ -17,6 +17,8 @@ import { element } from 'protractor';
 export class Step3Component implements OnInit {
   @Input() initStep: number;
   @Output() stepChanged: EventEmitter<number> = new EventEmitter();
+  @Output() goToStep4: EventEmitter<FormGroup> = new EventEmitter();
+
   warrantiesTypes: WarrantyTypeModule[];
 
   formStep3: FormGroup;
@@ -66,6 +68,8 @@ export class Step3Component implements OnInit {
     return this.stepChanged.emit(this.initStep - 1);
   }
   stepPlus(): any {
-    return this.stepChanged.emit(this.initStep + 1);
+    this.stepChanged.emit(this.initStep + 1);
+    this.goToStep4.emit(this.formStep3.value);
+    console.log(this.formStep3.value);
   }
 }

@@ -15,4 +15,8 @@ export class WizardWarrantyComponent implements OnInit {
   changeStep($event): number {
     return (this.step = $event);
   }
+
+  goToStep4($event): void {
+    console.log($event);
+  }
 }
