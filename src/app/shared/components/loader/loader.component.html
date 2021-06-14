@@ -1,0 +1,18 @@
+<!--  class="loaderNewHire" -->
+<div
+  *ngIf="loading"
+  [ngClass]="{ loaderNewHire: typeIn, loader: !typeIn }"
+  id="loader"
+>
+  <div class="container">
+    <div class="d-flex justify-content-center" style="margin: 0 auto">
+      <img src="./../../../../assets/img/Gear-0.2s-150px.gif" />
+      <img
+        src="./../../../../assets/img/Gear-0.2s-150px.gif"
+        style="height: 100px"
+      />
+      <img src="./../../../../assets/img/Gear-0.2s-150px.gif" />
+    </div>
+  </div>
+  <!-- <h5>{{ message }}</h5> -->
+</div>

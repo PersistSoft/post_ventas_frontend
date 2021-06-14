@@ -8,7 +8,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { element } from 'protractor';
+
 @Component({
   selector: 'app-step3',
   templateUrl: './step3.component.html',
@@ -20,7 +20,7 @@ export class Step3Component implements OnInit {
   @Output() goToStep4: EventEmitter<FormGroup> = new EventEmitter();
 
   warrantiesTypes: WarrantyTypeModule[];
-
+  loading = true;
   formStep3: FormGroup;
 
   // postVentasArray = new FormControl();
@@ -29,6 +29,7 @@ export class Step3Component implements OnInit {
     private warrantyTypeService: WarrantyTypeService,
     private fb: FormBuilder
   ) {
+    this.loading = false;
     this.warrantyTypeService.getAll().subscribe((data) => {
       this.warrantiesTypes = data.map((el) => {
         const newElement = { ...el, checked: false };
