@@ -10,7 +10,7 @@ import { ClientService } from 'src/app/core/services/client/client.service';
 })
 export class Step2Component implements OnInit {
   @Input() initStep: number;
-  @Output() stepChanged: EventEmitter<number> = new EventEmitter();
+  @Output() stepChanged: EventEmitter<{}> = new EventEmitter();
   step2Form: FormGroup;
   client: ClientModel = new ClientModel();
 
@@ -61,17 +61,17 @@ export class Step2Component implements OnInit {
   stepMinus(): any {
     return this.stepChanged.emit(this.initStep - 1);
   }
-  createClient(): void {
-    this.client.name = this.step2Form.value.name;
-    this.client.email = this.step2Form.value.email;
-    this.client.phone = this.step2Form.value.phone;
-    this.client.dataController = this.step2Form.value.dataController;
-    this.clientService
-      .createClient(this.client)
-      .subscribe((res: ClientModel) => {
-        this.client.id = res.id;
-      });
-  }
+  // createClient(): void {
+  //   this.client.name = this.step2Form.value.name;
+  //   this.client.email = this.step2Form.value.email;
+  //   this.client.phone = this.step2Form.value.phone;
+  //   this.client.dataController = this.step2Form.value.dataController;
+  //   this.clientService
+  //     .createClient(this.client)
+  //     .subscribe((res: ClientModel) => {
+  //       this.client.id = res.id;
+  //     });
+  // }
   stepPlus(): any {
     if (this.step2Form.invalid) {
       Object.values(this.step2Form.controls).forEach((control) => {
@@ -79,9 +79,11 @@ export class Step2Component implements OnInit {
         return;
       });
     } else {
-      this.createClient();
       console.log(this.client);
-      return this.stepChanged.emit(this.initStep + 1);
+      return this.stepChanged.emit({
+        step: this.initStep + 1,
+        step2contact: this.step2Form.value,
+      });
     }
   }
 }

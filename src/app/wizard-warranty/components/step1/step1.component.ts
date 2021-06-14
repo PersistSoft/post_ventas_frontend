@@ -15,9 +15,10 @@ import { AparmentModel } from './../../../core/models/aparment.model';
   styleUrls: ['./step1.component.scss'],
 })
 export class Step1Component implements OnInit {
+  loading = true;
   isInvalid = false;
   @Input() initStep: number;
-  @Output() stepChanged: EventEmitter<number> = new EventEmitter();
+  @Output() stepChanged: EventEmitter<{}> = new EventEmitter();
   step1Form: FormGroup;
   projects: ProjectModel[];
   selectedProject: ProjectModel;
@@ -35,6 +36,7 @@ export class Step1Component implements OnInit {
     this.stepForm();
     this.projectService.getAllProjects().subscribe((data) => {
       this.projects = data;
+      this.loading = false;
     });
   }
 
@@ -49,24 +51,32 @@ export class Step1Component implements OnInit {
   }
 
   onChangeProject(event): void {
+    this.loading = true;
     this.buildingService
       .getAllBuildingsByProjectsId(this.step1Form.value.project.id)
-      .subscribe((data) => (this.buildings = data));
+      .subscribe((data) => {
+        this.buildings = data;
+        this.loading = false;
+      });
   }
   onChangeBuilding(event): void {
+    this.loading = true;
     this.aparmentService
       .getAllBuildingsByProjectsId(this.step1Form.value.build.id)
       .subscribe((data) => {
         this.aparments = data;
+        this.loading = false;
       });
   }
 
   saveStep(): any {
-    // if (this.step1Form.invalid) {
-    //   this.isInvalid = true;
-    //   return;
-    // }
-    console.log(this.step1Form.value);
-    return this.stepChanged.emit(this.initStep + 1);
+    if (this.step1Form.invalid) {
+      return;
+    }
+
+    return this.stepChanged.emit({
+      step: this.initStep + 1,
+      infoStep1: this.step1Form.value,
+    });
   }
 }

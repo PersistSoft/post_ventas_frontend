@@ -8,6 +8,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { ContactInfo } from 'src/app/core/models/contactInfo.model';
 
 @Component({
   selector: 'app-step3',
@@ -16,6 +17,9 @@ import {
 })
 export class Step3Component implements OnInit {
   @Input() initStep: number;
+  @Input() infoAparment: any;
+  @Input() infoContact: ContactInfo;
+
   @Output() stepChanged: EventEmitter<number> = new EventEmitter();
   @Output() goToStep4: EventEmitter<FormGroup> = new EventEmitter();
 
@@ -41,6 +45,7 @@ export class Step3Component implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    console.log(this.infoAparment, this.infoContact);
   }
 
   createForm(): void {
