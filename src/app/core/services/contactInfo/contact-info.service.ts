@@ -12,7 +12,11 @@ export class ContactInfoService {
   private URL = environment.url;
   constructor(private http: HttpClient) {}
 
-  createContactAfterSell(client: ContactInfo): Observable<any> {
-    return this.http.post(`${this.URL}/contacts`, client);
+  // createContactForWarranty(client: ContactInfo): Observable<any> {
+  //   return this.http.post(`${this.URL}/warranties`, client);
+  // }
+
+  createContactAfterSell(contacts: ContactInfo): Observable<any> {
+    return this.http.post(`${this.URL}/contacts`, contacts);
   }
 }

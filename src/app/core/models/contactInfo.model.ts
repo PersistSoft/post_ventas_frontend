@@ -3,5 +3,5 @@ export class ContactInfo {
   name: string;
   email: string;
   phone: number;
-  dataController: boolean;
+  dataTreatment: boolean;
 }

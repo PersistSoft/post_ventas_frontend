@@ -1,6 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { WarrantyTypeService } from './../../../core/services/warrantyType/warranty-type.service';
 import { WarrantyTypeModule } from './../../../core/models/warranty-type.model';
+
+import { ContactInfo } from 'src/app/core/models/contactInfo.model';
+import { WarrantyModel } from 'src/app/core/models/warranty.model';
+import { ContactInfoService } from 'src/app/core/services/contactInfo/contact-info.service';
+
 import {
   FormArray,
   FormBuilder,
@@ -8,7 +13,6 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { ContactInfo } from 'src/app/core/models/contactInfo.model';
 
 @Component({
   selector: 'app-step3',
@@ -20,17 +24,18 @@ export class Step3Component implements OnInit {
   @Input() infoAparment: any;
   @Input() infoContact: ContactInfo;
 
-  @Output() stepChanged: EventEmitter<number> = new EventEmitter();
-  @Output() goToStep4: EventEmitter<FormGroup> = new EventEmitter();
+  @Output() stepChanged: EventEmitter<{}> = new EventEmitter();
 
   warrantiesTypes: WarrantyTypeModule[];
   loading = true;
   formStep3: FormGroup;
 
+  contactWithID;
   // postVentasArray = new FormControl();
 
   constructor(
     private warrantyTypeService: WarrantyTypeService,
+
     private fb: FormBuilder
   ) {
     this.loading = false;
@@ -71,11 +76,15 @@ export class Step3Component implements OnInit {
   }
 
   stepMinus(): any {
-    return this.stepChanged.emit(this.initStep - 1);
+    return this.stepChanged.emit({
+      step: this.initStep + 1,
+    });
   }
+
   stepPlus(): any {
-    this.stepChanged.emit(this.initStep + 1);
-    this.goToStep4.emit(this.formStep3.value);
-    console.log(this.formStep3.value);
+    this.stepChanged.emit({
+      step: this.initStep + 1,
+      step3info: this.formStep3.value,
+    });
   }
 }

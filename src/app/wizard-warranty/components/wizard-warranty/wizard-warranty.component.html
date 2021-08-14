@@ -111,18 +111,15 @@
                 <fieldset *ngIf="step === 3">
                   <app-step3
                     [initStep]="step"
-                    [infoAparment]="infoStep1"
-                    [infoContact]="infoStep2"
-                    (stepChanged)="changeStep($event)"
-                    (goToStep4)="goToStep4($event)"
+                    (stepChanged)="changeStep3($event)"
                   ></app-step3>
                 </fieldset>
-                <fieldset *ngIf="step === 4">
+                <!-- <fieldset *ngIf="step === 4">
                   <app-step4
                     [initStep]="step"
                     (stepChanged)="changeStep($event)"
                   ></app-step4>
-                </fieldset>
+                </fieldset> -->
               </div>
             </div>
           </div>

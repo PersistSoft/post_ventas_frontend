@@ -10,7 +10,6 @@ export class AparmentService {
   constructor(private http: HttpClient) {}
 
   getAllBuildingsByProjectsId(idProject: number): any {
-    console.log(idProject);
     return this.http.get(`${this.URL}/apartments/${idProject}`);
   }
 }

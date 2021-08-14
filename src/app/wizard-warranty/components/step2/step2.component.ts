@@ -79,7 +79,6 @@ export class Step2Component implements OnInit {
         return;
       });
     } else {
-      console.log(this.client);
       return this.stepChanged.emit({
         step: this.initStep + 1,
         step2contact: this.step2Form.value,
