@@ -16,7 +16,7 @@ export class WarrantyService {
     return this.http.post(`${this.URL}/contacts`, client);
   }
 
-  createWarranty(warranty: WarrantyModel): any {
+  createWarranty(warranty: WarrantyModel): Observable<any> {
     return this.http.post(`${this.URL}/warranties`, warranty);
   }
 }

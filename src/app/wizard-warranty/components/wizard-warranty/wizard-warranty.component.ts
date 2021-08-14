@@ -17,6 +17,7 @@ export class WizardWarrantyComponent implements OnInit {
   infoStep2;
   infoStep3;
   contact: ContactInfo;
+  newWarranty = new WarrantyModel();
   constructor(
     private contactInfoService: ContactInfoService,
     private warrantyService: WarrantyService
@@ -62,46 +63,46 @@ export class WizardWarrantyComponent implements OnInit {
   //   }
   // }
 
-  async warrantyContactInfo() {
+  changeStep3($event) {
+    this.infoStep3 = $event.step3info;
+
+    this.newWarranty.clientSign = null;
+    this.newWarranty.aparment = this.infoStep1.aparment;
+    this.newWarranty.warrantyTypes = this.infoStep3.warranties;
+    this.newWarranty.status = { id: 1, name: 'creada' };
+    this.newWarranty.value = null;
+    this.newWarranty.explanation = this.infoStep3.explanation;
+
+    this.warrantyContactInfo();
+  }
+
+  warrantyContactInfo() {
     if (this.infoStep2 && this.infoStep2.dataController === true) {
       const newContact = new ContactInfo();
       newContact.name = this.infoStep2.name;
-      newContact.phone = this.infoStep2.name;
+      newContact.phone = this.infoStep2.phone;
       newContact.email = this.infoStep2.email;
       newContact.dataTreatment = this.infoStep2.dataController;
+
       this.contactInfoService
         .createContactAfterSell(newContact)
         .subscribe((res) => {
-          console.log(res);
           this.contact = res;
+          this.newWarranty.contactInfo = this.contact;
+          this.saveWarranty();
         });
     }
   }
-
-  async changeStep3($event) {
-    this.infoStep3 = $event.step3info;
-    console.log('stept1', this.infoStep1);
-    console.log('infoStep2', this.infoStep2);
-    console.log('infoStep3', this.infoStep3);
-
-    const newWarranty = new WarrantyModel();
-    newWarranty.clientSign = null;
-    newWarranty.apartmentId = this.infoStep1.aparment.id;
-    newWarranty.warrantyTypeIds = this.infoStep3.warranties;
-    newWarranty.statusId = 1; // Creada
-    newWarranty.value = null;
-    newWarranty.explanation = this.infoStep3.explanation;
-
-    await this.warrantyContactInfo();
-    newWarranty.contractInfoId = this.contact.id;
-
-    // console.log(this.warrantyService.createWarranty(newWarranty));
-
-    Swal.fire({
-      title: 'Se ha Creado exitosamente la postventa!',
-      text: 'Do you want to continue',
-      icon: 'success',
-      confirmButtonText: 'Cool',
+  saveWarranty(): void {
+    console.log('this.newWarranty', this.newWarranty);
+    this.warrantyService.createWarranty(this.newWarranty).subscribe((res) => {
+      console.log(res);
+      Swal.fire({
+        title: 'Se ha Creado exitosamente la postventa!',
+        text: 'Do you want to continue',
+        icon: 'success',
+        confirmButtonText: 'Cool',
+      });
     });
   }
 }

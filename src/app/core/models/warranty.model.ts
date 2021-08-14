@@ -1,12 +1,14 @@
 import { WarrantyTypeModule } from './warranty-type.model';
+import { ContactInfo } from './contactInfo.model';
+import { StatusModel } from './status.model';
 
 export class WarrantyModel {
   clientSign: number;
-  apartmentId: number;
-  warrantyTypeIds: WarrantyTypeModule[];
-  statusId: number;
+  aparment: number;
+  warrantyTypes: WarrantyTypeModule[];
+  status: StatusModel;
   value: number;
-  contractInfoId: number;
+  contactInfo: ContactInfo;
   closeAt: Date;
   explanation: string;
 }
