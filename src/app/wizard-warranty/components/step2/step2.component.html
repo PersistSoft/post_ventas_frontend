@@ -8,30 +8,38 @@
         <div class="col text-center">Ingrse Informacion de Contacto</div>
       </div>
     </div>
-
-    <form>
+    <form [formGroup]="step2Form">
       <div class="form-group mb-3 mt-3 row">
         <label for="name" class="form-label text-start mx-1 px-0"
-          >Ingrese Nombre completo</label
+          >Ingrese Nombre y Apellidos</label
         >
         <input
           type="text"
           class="form-control"
           id="floatingInput"
           placeholder="Nombre Completo"
+          formControlName="name"
+          [class.is-invalid]="nameInvalid"
         />
+        <small *ngIf="nameInvalid" class="text-danger text-start"
+          >Ingresar Nombre y Apellidos</small
+        >
       </div>
-
       <div class="form-group mb-3 row">
         <label for="name" class="form-label text-start mx-1 px-0"
-          >Telefono</label
+          >Ingrese Correo</label
         >
         <input
-          type="number"
+          type="email"
           class="form-control"
           id="floatingInput"
-          placeholder="tel"
+          placeholder="email"
+          formControlName="email"
+          [class.is-invalid]="emailInvalid"
         />
+        <small *ngIf="emailInvalid" class="text-danger text-start"
+          >Debe Ingresar un Correo Valido</small
+        >
       </div>
       <div class="form-group mb-3 row">
         <label for="name" class="form-label text-start mx-1 px-0"
@@ -42,24 +50,39 @@
           class="form-control"
           id="floatingInput"
           placeholder="cel"
+          formControlName="phone"
+          [class.is-invalid]="phoneInvalid"
         />
-      </div>
-      <div class="form-group mb-3 row">
-        <label for="name" class="form-label text-start mx-1 px-0"
-          >Ingrese Correo</label
+        <small *ngIf="phoneInvalid" class="text-danger text-start"
+          >Debe Ingresar un Telefono Valido</small
         >
-        <input
-          type="number"
-          class="form-control"
-          id="floatingInput"
-          placeholder="email"
-        />
       </div>
+      <div
+        class="form-check form-check-inline text-start d-flex justify-content-start"
+      >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="flexRadioDefault"
+          id="flexRadioDefault1"
+          formControlName="dataController"
+          [class.is-invalid]="dataControllerInvalid"
+        />
+        <label class="form-check-label mx-2" for="flexRadioDefault1">
+          He leìdo y acepto la
+          <a routerLink="/data-treatment" target="_blank"
+            >Politica de privacidad de datos</a
+          >
+        </label>
+      </div>
+      <small *ngIf="dataControllerInvalid" class="text-danger text-start"
+        >Debe Aceptar la Politica de tratamiento de datos</small
+      >
     </form>
     <div class="row">
-      <div class="col text-start text-break">
+      <div class="col text-start word-wrap py-2">
         <p class="lh-sm">Revisar por el abogado este parrafo es una copia</p>
-        <p>
+        <p class="text-break">
           NOTA : Recuerde que para la atencion de su requerimiento es
           indispensable que los daños no sean consecuencia de uso indebido,
           falta de mantenimiento, o por no sefuir las recomendaciones

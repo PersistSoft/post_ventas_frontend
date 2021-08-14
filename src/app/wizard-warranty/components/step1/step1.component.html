@@ -1,3 +1,4 @@
+<app-loader [loading]="loading"></app-loader>
 <section id="step1" class="pt-3 pb-2">
   <div class="container">
     <div class="row">
@@ -9,21 +10,33 @@
       <div class="col">Selecciona el inmueble</div>
     </div>
 
-    <form class="form-iniline">
+    <form class="form-iniline" [formGroup]="step1Form">
       <div class="form-group row mb-3 mt-3">
         <label class="form-label text-start mx-1 px-0" for="project"
-          >Projecto</label
+          >Project</label
         >
         <select
           type="text"
           class="form-control"
           id="project"
           placeholder="Selecione el Projecto"
+          formControlName="project"
+          (change)="onChangeProject($event)"
         >
-          <option>La Vida Es Bella</option>
-          <option>Amsterdam</option>
-          <option>Roterdam</option>
+          <option value="" disabled selected>Selecione Proyecto</option>
+          <option
+            *ngFor="let project of projects"
+            [ngValue]="project"
+            [selected]
+          >
+            {{ project.name }}
+          </option>
         </select>
+        <!-- <small
+          *ngIf="this.step1Form.invalid && this.step1Form.touched"
+          class="text-danger"
+          >Debe Seleccionar un Projecto</small
+        > -->
       </div>
       <div class="form-group row mb-3">
         <label class="form-label text-start mx-1 px-0" for="project"
@@ -33,37 +46,56 @@
           type="text"
           class="form-control"
           id="project"
+          formControlName="build"
           placeholder="Selecione el Projecto"
+          (change)="onChangeBuilding($event.target.value)"
         >
-          <option>Torre 1</option>
-          <option>Bloque A</option>
-          <option>Torre 3</option>
+          <!-- [class.is-invalid]="this.step1Form.invalid && this.step1Form.touched" -->
+          <option value="" disabled selected>Selecione Edificio</option>
+          <option *ngFor="let build of buildings" [ngValue]="build">
+            {{ build.name }}
+          </option>
         </select>
+        <small *ngIf="false" class="text-danger"
+          >Debe Seleccionar una Torre</small
+        >
       </div>
 
       <div class="form-group row mb-3">
         <label class="form-label text-start mx-1 px-0" for="project"
-          >Selecione el inmueble</label
+          >Inmueble</label
         >
         <select
           type="text"
           class="form-control"
           id="project"
-          placeholder="Selecione el Projecto"
+          formControlName="aparment"
+          placeholder="Selecione Inmueble"
         >
-          <option>Casas 1</option>
-          <option>312</option>
-          <option>101</option>
+          <option value="" disabled selected>Selecione Inmueble</option>
+          <option *ngFor="let aparment of aparments" [ngValue]="aparment">
+            {{ aparment.name }}
+          </option>
         </select>
+        <!-- <small *ngIf="false" class="text-danger"
+          >Debe Seleccionar un apartamento</small
+        > -->
       </div>
     </form>
+    <div class="row">
+      <div class="col">
+        <small *ngIf="this.isInvalid" class="text-danger"
+          >Revisar el Formulario Esa mal diligenciado</small
+        >
+      </div>
+    </div>
 
     <input
       type="button"
       name="next"
       class="btn btn-outline-success mt-3 mb-2"
       value="Next Step"
-      (click)="stepPlus()"
+      (click)="saveStep()"
     />
   </div>
 </section>

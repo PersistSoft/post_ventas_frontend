@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
 
 import { WizardWarrantyComponent } from './components/wizard-warranty/wizard-warranty.component';
 import { WizardWarrantyRoutingModule } from './wizard-warranty-routing.module';
@@ -19,6 +20,12 @@ import { SharedModule } from './../shared/shared.module';
     Step3Component,
     Step4Component,
   ],
-  imports: [CommonModule, SharedModule, WizardWarrantyRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    WizardWarrantyRoutingModule,
+  ],
 })
 export class WizardWarrantyModule {}

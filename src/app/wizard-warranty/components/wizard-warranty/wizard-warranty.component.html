@@ -16,7 +16,17 @@
           <!-- progressbar  col-lg-3 col-md-6 col-sm-12 -->
 
           <div
-            class="col-lg-2 flex-fill shadow-sm-1 mx-1 my-2 py-2 rounded"
+            class="
+              wizard_element
+              col-lg-2
+              flex-fill
+              shadow-sm-1
+              mx-1
+              my-2
+              py-2
+              rounded
+            "
+            [ngClass]="step === 1 ? 'alert alert-danger select' : null"
             id="account"
           >
             <strong class="my-2">Inmueble</strong>
@@ -24,7 +34,17 @@
             <span class="badge bg-primary mb-2 rounded-pill">pending</span>
           </div>
           <div
-            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 rounded"
+            class="
+              wizard_element
+              col-lg-2
+              flex-sm-fill
+              shadow-sm
+              mx-1
+              my-2
+              py-2
+              rounded
+            "
+            [ngClass]="step === 2 ? 'alert alert-danger select' : null"
             id="personal"
           >
             <strong>Contacto</strong>
@@ -33,7 +53,17 @@
           </div>
 
           <div
-            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 rounded"
+            class="
+              wizard_element
+              col-lg-2
+              flex-sm-fill
+              shadow-sm
+              mx-1
+              my-2
+              py-2
+              rounded
+            "
+            [ngClass]="step === 3 ? 'alert alert-danger select' : null"
             id="warranty"
           >
             <strong>Garantias</strong>
@@ -42,7 +72,18 @@
           </div>
 
           <div
-            class="col-lg-2 flex-sm-fill shadow-sm mx-1 my-2 py-2 px-1 rounded"
+            class="
+              wizard_element
+              col-lg-2
+              flex-sm-fill
+              shadow-sm
+              mx-1
+              my-2
+              py-2
+              px-1
+              rounded
+            "
+            [ngClass]="step === 4 ? 'alert alert-danger select' : null"
             id="confirm"
           >
             <strong>Confirmacion</strong>
@@ -64,21 +105,21 @@
                 <fieldset *ngIf="step === 2">
                   <app-step2
                     [initStep]="step"
-                    (stepChanged)="changeStep($event)"
+                    (stepChanged)="changeStep2($event)"
                   ></app-step2>
                 </fieldset>
                 <fieldset *ngIf="step === 3">
                   <app-step3
                     [initStep]="step"
-                    (stepChanged)="changeStep($event)"
+                    (stepChanged)="changeStep3($event)"
                   ></app-step3>
                 </fieldset>
-                <fieldset *ngIf="step === 4">
+                <!-- <fieldset *ngIf="step === 4">
                   <app-step4
                     [initStep]="step"
                     (stepChanged)="changeStep($event)"
                   ></app-step4>
-                </fieldset>
+                </fieldset> -->
               </div>
             </div>
           </div>

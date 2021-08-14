@@ -1,3 +1,4 @@
+<app-loader [loading]="loading"></app-loader>
 <section id="step1" class="pt-3 pb-2">
   <div class="container">
     <div class="row">
@@ -5,32 +6,32 @@
         <h3 class="text-uppercase">Selecione las causas de atencion</h3>
       </div>
     </div>
-
-    <div class="list-group text-start">
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Carpinteria
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Plomeria
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Electrica
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Fourth checkbox
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value="" />
-        Estructura (Es la garantia del edificio. Cubrira en terminos generales
-        los defectos de contruccion que afectemn la seguridad y estabilidad
-        estructural del edificio)
-      </label>
+    <div [formGroup]="formStep3">
+      <div
+        class="list-group text-start"
+        *ngFor="let type of warrantiesTypes; let i = index"
+      >
+        <label class="list-group-item mb-2" [ngValue]="type">
+          <input
+            class="form-check-input ml-2 mr-1"
+            type="checkbox"
+            (click)="isChecked(type)"
+          />
+          {{ type.name }}
+        </label>
+      </div>
+      <div class="form-floating" *ngIf="warrantiesArray.length > 0">
+        <textarea
+          formControlName="explanation"
+          class="form-control mb-2 comment-post"
+          name=""
+          id="postventa-comment"
+        ></textarea>
+        <label for="postventa-comment" class="my-1"
+          >Detalle de Post venta</label
+        >
+      </div>
     </div>
-
     <input
       type="button"
       name="previous"
@@ -43,6 +44,7 @@
       name="next"
       class="btn btn-outline-success mt-3 mb-2"
       value="Next Step"
+      [disabled]="this.formStep3.invalid"
       (click)="stepPlus()"
     />
   </div>
