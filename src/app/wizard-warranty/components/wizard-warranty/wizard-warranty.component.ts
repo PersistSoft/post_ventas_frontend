@@ -63,7 +63,7 @@ export class WizardWarrantyComponent implements OnInit {
   //   }
   // }
 
-  changeStep3($event) {
+  changeStep3($event): void {
     this.infoStep3 = $event.step3info;
     console.log(this.infoStep3);
     this.newWarranty.clientSign = null;
@@ -98,9 +98,11 @@ export class WizardWarrantyComponent implements OnInit {
     this.warrantyService.createWarranty(this.newWarranty).subscribe((res) => {
       console.log('res', res);
       Swal.fire({
-        title: `Hola! ${this.infoStep2.name}, Grcias por comunicarte con nosotros`,
+        title: `Hola! ${this.infoStep2.name},`,
 
-        html: `Se ha Creado exitosamente la postventa el radicado es el numero <b>${res.id}</b>.<br>
+        html: `
+        Gracias por comunicarte con nosotros</b></b>
+        Se ha Creado exitosamente la postventa el radicado es el numero <b>${res.id}</b>.<br>
          En los proximos 3 dias habiles uno de nuestros ingeniros se comunicara contigo`,
         footer: `Siempre`,
         icon: 'success',
