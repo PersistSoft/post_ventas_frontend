@@ -100,10 +100,15 @@ export class WizardWarrantyComponent implements OnInit {
       Swal.fire({
         title: `Hola! ${this.infoStep2.name}, Grcias por comunicarte con nosotros`,
 
-        text: `Se ha Creado exitosamente la postventa el radicado es el numero ${res.id}.En los proximos 3 dias habiles uno de nuestros ingeniros se comunicara contigo`,
-
+        html: `Se ha Creado exitosamente la postventa el radicado es el numero <b>${res.id}</b>.<br>
+         En los proximos 3 dias habiles uno de nuestros ingeniros se comunicara contigo`,
+        footer: `Siempre`,
         icon: 'success',
+        grow: 'column',
+        allowEnterKey: true,
         confirmButtonText: 'Cool',
+      }).then((res) => {
+        window.location.reload();
       });
     });
   }
