@@ -58,7 +58,12 @@
         >
       </div>
       <div
-        class="form-check form-check-inline text-start d-flex justify-content-start"
+        class="
+          form-check form-check-inline
+          text-start
+          d-flex
+          justify-content-start
+        "
       >
         <input
           class="form-check-input"
@@ -103,6 +108,7 @@
       name="next"
       class="btn btn-outline-success mt-3 mb-2"
       value="Next Step"
+      [disabled]="step2Form.invalid"
       (click)="stepPlus()"
     />
   </div>
