@@ -8,7 +8,7 @@ import { AparmentService } from './../../../core/services/aparment/aparment.serv
 import { ProjectModel } from '../../../core/models/project.model';
 import { BuildingModel } from './../../../core/models/building.model';
 import { AparmentModel } from './../../../core/models/aparment.model';
-import { MyValidators } from 'src/app/utils/validators';
+import { MyValidators } from './../../../utils/validators';
 
 @Component({
   selector: 'app-step1',
