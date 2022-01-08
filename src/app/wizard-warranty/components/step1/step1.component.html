@@ -100,9 +100,15 @@
       </div>
       <div
         class="alert alert-danger"
+        style="
+          height: 20px;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+        "
         *ngIf="step1Form.hasError('not_available')"
       >
-        <p style="color: res">No coinciden el codigo del apartamento</p>
+        <p style="margin: 0">No coinciden el codigo del apartamento</p>
       </div>
     </form>
     <div class="row">
