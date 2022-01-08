@@ -8,6 +8,7 @@ import { AparmentService } from './../../../core/services/aparment/aparment.serv
 import { ProjectModel } from '../../../core/models/project.model';
 import { BuildingModel } from './../../../core/models/building.model';
 import { AparmentModel } from './../../../core/models/aparment.model';
+import { MyValidators } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-step1',
@@ -43,11 +44,22 @@ export class Step1Component implements OnInit {
   ngOnInit(): void {}
 
   private stepForm(): any {
-    this.step1Form = this.fb.group({
-      project: ['', Validators.required],
-      build: ['', Validators.required],
-      aparment: ['', Validators.required],
-    });
+    this.step1Form = this.fb.group(
+      {
+        project: ['', Validators.required],
+        build: ['', Validators.required],
+        aparment: ['', Validators.required],
+        aparmentCode: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(9),
+          ],
+        ],
+      },
+      { asyncValidators: MyValidators.validateAparment(this.aparmentService) }
+    );
   }
 
   onChangeProject(event): void {
@@ -67,6 +79,11 @@ export class Step1Component implements OnInit {
         this.aparments = data;
         this.loading = false;
       });
+  }
+
+  // tslint:disable-next-line: typedef
+  get aparmentCodeField() {
+    return this.step1Form.get('aparmentCode');
   }
 
   saveStep(): any {
